@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 
-class Book extends Component {
-
-    render(){
-        const { data, handleSelect } = this.props;
+const Book = props => {
+        const { data, handleSelect } = props;
 
         return(
             <li>
@@ -23,7 +21,7 @@ class Book extends Component {
                             </div>
                         </div>
                         {data.title !== undefined ? (
-                            <div className="book-title">{data.title}}</div>
+                            <div className="book-title">{data.title}</div>
                         ) : (
                             <div className='book-title'>Untitled</div>
                         )}
@@ -36,7 +34,6 @@ class Book extends Component {
                 </div>
              </li>
         )
-    }
-}
+};
 
 export default Book;
