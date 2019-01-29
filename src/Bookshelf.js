@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import Book from './Book';
 
 const Bookshelf = props => {
-      const { title, books = [], handleSelect } = props;
+      const { title, books, handleSelect } = props;
         
       return(
             <div className="bookshelf">
@@ -22,3 +23,9 @@ const Bookshelf = props => {
 };
 
 export default Bookshelf;
+
+Bookshelf.propTypes = {
+  title: PropTypes.string.isRequired,
+  handleSelect: PropTypes.func.isRequired,
+  books: PropTypes.array.isRequired
+}

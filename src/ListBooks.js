@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import Bookshelf from './Bookshelf'
 
 import './App.css'
@@ -55,3 +56,8 @@ class ListBooks extends React.Component{
 }
 
 export default ListBooks;
+
+ListBooks.propTypes = {
+  handleSelect: PropTypes.func.isRequired,
+  books: PropTypes.array.isRequired
+}

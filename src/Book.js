@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 const Book = props => {
         const { data, handleSelect } = props;
@@ -7,8 +8,15 @@ const Book = props => {
             <li>
                 <div className="book">
                         <div className="book-top">
-                            <div className="book-cover" 
-                                style={{ width: 128, height: 193, backgroundImage: `url("${data.imageLinks.smallThumbnail}")` }}></div>
+                            {data.imageLinks !== undefined ? (
+                                <a href={data.previewLink} target="_blank" rel="noopener noreferrer">
+                                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url('${data.imageLinks.thumbnail}')` }}></div>
+                                </a>
+                                ) : (
+                                <a href={data.previewLink} target="_blank" rel="noopener noreferrer">
+                                    <div className="book-cover" style={{ width: 128, height: 193 }}></div>
+                                </a>
+                            )}
                             <div className="book-shelf-changer">
                                 <select value={data.shelf !== undefined ? data.shelf : 'none'}
                                 onChange={(e) => handleSelect(data, e.target)}>
@@ -37,3 +45,8 @@ const Book = props => {
 };
 
 export default Book;
+
+Book.propTypes = {
+    data: PropTypes.object.isRequired,
+    handleSelect: PropTypes.func.isRequired
+}
